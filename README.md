@@ -36,7 +36,7 @@ the values of n where the error increases:
 Interestingly, there seems to be another pattern here! These appear to be all the numbers that are neither prime powers, nor semiprimes!
 [This is OEIS A102467](https://oeis.org/A102467).
 
-This is where I currently find myself in the rabbit hole - I belive these n values are *where* the error increases, but I have not yet been able to determine
+This is where I currently find myself in the rabbit hole - these empirically appear to be the values of n *where* the error increases, but I have not yet been able to determine
 *what* the error will be. It appears it is always even, but I haven't been able to find any sort of generating pattern yet. I'll definitely keep thinking about it,
 but I suspect I'll need to learn some more mathemmatical tools and techniques!
 
