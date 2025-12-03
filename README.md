@@ -17,7 +17,7 @@ k and n-k can be expressed as a sum of prime divisors of n."
 BUT as soon as I got some lisp code running to verify (1), I realized that the equality does NOT hold. After n = 12, the sum 
 is 2 off. After n = 18, it is 6 off, and so on.
 
-In fact, the absolute differences look like this:
+In fact, the differences look like this:
 
 (0 0 0 0 0 0 0 0 0 0 0 0 2 2 2 2 2 2 6 6 10 10 10 10 16 16 16 16 22 22 28 28 28
  28 28 28 38 38 38 38 50 50 60 60 70 86 86 86 100 100 116 116 128 128 144 144
