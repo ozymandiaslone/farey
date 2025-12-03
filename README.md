@@ -11,8 +11,10 @@ with n equally spaced holes.
 
 This actually turns out to be an interesting sequence in and of itself with such properties as Ishwar's theorem:
 
-"You can balance k identical test tubes, 1 ≤ k ≤ n, in an n-hole centrifuge if and only if both
-k and n-k can be expressed as a sum of prime divisors of n."
+*"You can balance k identical test tubes, 1 ≤ k ≤ n, in an n-hole centrifuge if and only if both
+k and n-k can be expressed as a sum of prime divisors of n."*
+
+------------------------------------------------------------------
 
 BUT as soon as I got some lisp code running to verify (1), I realized that the equality does NOT hold. After n = 12, the sum 
 is 2 off. After n = 18, it is 6 off, and so on.
@@ -32,7 +34,7 @@ the values of n where the error increases:
 (12 18 20 24 28 30 36 40 42 44 45 48 50 52 54 56 60 63 66 68 70 72 75 76 78 80 84 ... )
 
 Interestingly, there seems to be another pattern here! These appear to be all the numbers that are neither prime powers, nor semiprimes!
-(This is OEIS A102467)[https://oeis.org/A102467].
+[This is OEIS A102467](https://oeis.org/A102467).
 
 This is where I find myself today - belive these n values are *where* the error increases, but I have not yet been able to determine
 *what* the error will be. 
