@@ -3,13 +3,13 @@ While on vacation, sitting by the beach, I began reading *Exploring the Number J
 by Edward B Burger. Within the first dozen or so pages, it introduced the concept of Farey sequences, and 
 asked the reader to play around with them. After messing around a bit in my notebook, the first thing that jumped out to me was:<br>
 
-$$(1) \sum_{n=1}^i (n + 1) - a(n) = |\mathcal{F}_i|$$<br>
+$$(1) \sum_{n=1}^i [(n + 1) - a(n)] = |\mathcal{F}_i|$$<br>
 
 Where a(n) is [OEIS A322366](https://oeis.org/A322366) - also known as the centrifuge balance problem.
 a(n) = Number of integers k in {0,1,...,n} such that k identical test tubes can be balanced in a centrifuge
 with n equally spaced holes.
 
-This actually turns out to be an interesting sequence in and of itself with such properties as Ishwar's theorem:
+This actually turns out to be an interesting sequence (apart from its potential connection to the size of farey sequences) with such properties as Ishwar's theorem:
 
 *"You can balance k identical test tubes, 1 ≤ k ≤ n, in an n-hole centrifuge if and only if both
 k and n-k can be expressed as a sum of prime divisors of n."*
