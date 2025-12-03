@@ -1,4 +1,4 @@
-# Quick Motivation
+# Quick description 
 While on vacation, sitting by the beach, I began reading *Exploring the Number Jungle: A Journey into Diophantine Analysis* 
 by Edward B Burger. Within the first dozen or so pages, it introduced the concept of Farey sequences, and 
 asked the reader to play around with them. After messing around a bit in my notebook, the first thing that jumped out to me was:<br>
@@ -36,8 +36,9 @@ the values of n where the error increases:
 Interestingly, there seems to be another pattern here! These appear to be all the numbers that are neither prime powers, nor semiprimes!
 [This is OEIS A102467](https://oeis.org/A102467).
 
-This is where I find myself today - belive these n values are *where* the error increases, but I have not yet been able to determine
-*what* the error will be. It appears it is always even, but I haven't been able to find any sort of generating pattern yet. 
+This is where I currently find myself in the rabbit hole - I belive these n values are *where* the error increases, but I have not yet been able to determine
+*what* the error will be. It appears it is always even, but I haven't been able to find any sort of generating pattern yet. I'll definitely keep thinking about it,
+but I suspect I'll need to learn some more mathemmatical tools and techniques!
 
 I don't have anybody I can talk to about math in my life, so if anybody sees this and cares to talk (about this, or anything) please feel free to
 reach out to me! I can be contaced here on github, or at my email: *saltsperkins@gmail.com*, or even via text: *(402) 672 7759*
