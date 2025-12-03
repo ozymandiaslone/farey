@@ -37,7 +37,10 @@ Interestingly, there seems to be another pattern here! These appear to be all th
 [This is OEIS A102467](https://oeis.org/A102467).
 
 This is where I find myself today - belive these n values are *where* the error increases, but I have not yet been able to determine
-*what* the error will be. 
+*what* the error will be. It appears it is always even, but I haven't been able to find any sort of generating pattern yet. 
+
+I don't have anybody I can talk to about math in my life, so if anybody sees this and cares to talk (about this, or anything) please feel free to
+reach out to me! I can be contaced here on github, or at my email: *saltsperkins@gmail.com*, or even via text: *(402) 672 7759*
 
 
 
