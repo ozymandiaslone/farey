@@ -1,4 +1,4 @@
-This is a README markdown test :)
-$$\sum_{n=1}^\infty \frac{1}{n^2} = \frac{\pi^2}{6}$$
+This is a README markdown test :)<br>
+$$\sum_{n=1}^i (n + 1) - a(n) = |F_i|$$
 
 
