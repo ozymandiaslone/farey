@@ -1,20 +1,5 @@
-;; ============================================================================
-;;  number theoretic sequences: centrifuge & farey
-;;  platform: sbcl (steel bank common lisp)
-;; ============================================================================
-
-(defpackage :number-theory-worker
-  (:use :cl :sb-thread)
-  (:export :run-all-tests :verify-conjecture))
-
-(in-package :number-theory-worker)
-
-;; ============================================================================
-;;  shared utilities: primes and factorization
-;; ============================================================================
-
 (defun prime-factors (n)
-  "return list of prime factors of n (with multiplicity)."
+  "return list of prime factors of n (with duplicates)."
   (loop with factors = '()
         with d = 2
         while (> n 1)
@@ -44,13 +29,10 @@
         when (zerop (mod n i))
         collect i))
 
-;; ============================================================================
-;;  part 1: centrifuge balance series (a322366)
-;; ============================================================================
+;;OEIS a322366
 
 (defun can-express-as-sum (target primes memo)
-  "check if target can be expressed as sum of primes (frobenius coin problem).
-   uses memoization for efficiency."
+  "check if target can be expressed as sum of primes (frobenius coin problem)."
   (cond
     ((zerop target) t)
     ((minusp target) nil)
@@ -93,19 +75,15 @@
         do (setf (aref results n) (a322366-single n)))
   results)
 
-;; ============================================================================
-;;  part 2: farey sequence cardinality
-;; ============================================================================
+;; farey sequence cardinality
 
 (defun farey-cardinality-standard (n)
-  "calculate |f_n| using the standard formula: 1 + sum phi(k).
-   used primarily to bootstrap the optimized range function."
+  "calculate |f_n| using the standard formula: 1 + sum phi(k)."
   (1+ (loop for k from 1 to n
             sum (totient k))))
 
 (defun compute-farey-range-optimized (start end results)
-  "compute farey cardinality incrementally for range [start, end].
-   optimization: calculates base sum once, then adds phi(n) iteratively."
+  "compute farey cardinality incrementally for range [start, end]."
   
   ;; 1. compute the baseline for the number immediately preceding 'start'
   ;;    if start is 0, the sum is 1. if start > 0, we calculate f_(start-1).
@@ -125,9 +103,7 @@
                (setf (aref results n) current-sum))))
   results)
 
-;; ============================================================================
-;;  part 3: conjecture verification
-;; ============================================================================
+;; testing against conjecture
 
 (defun farey-via-conjecture (n centrifuge-results)
   "compute |F_n| using conjecture: sum from i=1 to n of [(i+1) - a(i)]
@@ -148,11 +124,11 @@
   ;; compute both sequences
   (format t "Computing centrifuge sequence (A322366)...~%")
   (let ((centrifuge (time (run-parallel-job :centrifuge max-n 8))))
-    (format t "~%Computing Farey cardinality (standard method)...~%")
+    (format t "~%Computing Farey cardinality (standard method : totient fn)...~%")
     (let ((farey-standard (time (run-parallel-job :farey max-n 8))))
       
       ;; compute via conjecture
-      (format t "~%Computing Farey cardinality (via conjecture)...~%")
+      (format t "~%Computing Farey cardinality (via conjectured sum)...~%")
       (let* ((farey-conjecture (make-array (1+ max-n) :initial-element 0))
              (differences (make-array (1+ max-n) :initial-element 0))
              (start-time (get-internal-real-time)))
@@ -215,7 +191,7 @@
           (format t "~%~%--- DIFFERENCE SEQUENCE FOR OEIS LOOKUP ---~%~%")
           (format t "Absolute differences |F_n - Conjecture_n|:~%~%")
           (format t "~a~%" (coerce differences 'list))
-          
+
           ;; analyze the error sequence
           (format t "~%~%--- ERROR SEQUENCE ANALYSIS ---~%~%")
           (format t "Jump points (where error increases):~%~%")
@@ -232,7 +208,6 @@
                      (format t " ~3d  ~5d  ~4d  ~4d  ~4d  ~4d  ~4d  ~4d  ~4d~%"
                             n (aref differences n) jump (aref centrifuge n)
                             phi d sigma omega big-omega)))
-          
           ;; try to find pattern in jumps
           (format t "~%~%Analyzing jump magnitudes:~%~%")
           (let ((jumps '()))
@@ -244,9 +219,6 @@
           
           (values all-match farey-standard farey-conjecture centrifuge differences))))))
 
-;; ============================================================================
-;;  parallel executor
-;; ============================================================================
 
 (defun run-parallel-job (job-type max-n num-threads)
   "generic parallel driver for both sequences."
@@ -273,22 +245,17 @@
     
     results))
 
-;; ============================================================================
-;;  testing
-;; ============================================================================
 
 (defun test-centrifuge (&optional (max-n 100))
   (format t "~%--- a322366 (centrifuge) [0..~d] ---~%" max-n)
   (let ((results (time (run-parallel-job :centrifuge max-n 8))))
     (format t "first few: ~a~%" (subseq results 0 (min 20 (length results))))
-    (format t "expect:   #(1 0 2 2 3 2 5 2 5 4 7 2 11 2 9 8 9 2 17 2)~%")
     results))
 
 (defun test-farey (&optional (max-n 100))
   (format t "~%--- farey cardinality [0..~d] ---~%" max-n)
   (let ((results (time (run-parallel-job :farey max-n 8))))
     (format t "first few: ~a~%" (subseq results 0 (min 20 (length results))))
-    (format t "expect:   #(1 2 3 5 7 11 13 19 23 29 33 43 47 59 65 73 81 97 103 121)~%")
     results))
 
 (defun run-all-tests ()
