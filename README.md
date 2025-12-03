@@ -2,7 +2,9 @@
 While on vacation, sitting by the beach, I began reading *Exploring the Number Jungle: A Journey into Diophantine Analysis* 
 by Edward B Burger. Within the first dozen or so pages, it introduced the concept of Farey sequences, $$\mathcal{F}_i$$, and 
 asked the reader to play around with them. After messing around a bit in my notebook, the first thing that jumped out to me was:<br>
-$$(1) \sum_{n=1}^i (n + 1) - a(n + 1) = |\mathcal{F}_i|$$<br>
+$$
+(1)\quad \sum_{n=1}^i \left[(n+1) - a(n+1)\right] = |\mathcal{F}_i|
+$$
 Where a(n) is [OEIS A322366](https://oeis.org/A322366) - also known as the centrifuge balance problem.
 a(n) = Number of integers k in {0,1,...,n} such that k identical test tubes can be balanced in a centrifuge
 with n equally spaced holes.
